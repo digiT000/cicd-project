@@ -1,32 +1,30 @@
-name: "CI/CD Pipeline Practice"
+name: "Frontend CI/CD Pipeline"
 
-# Run the workflow on push or pull request events to the main branch
+# # Trigger the workflow on pull requests to the main branch
 on:
   push:
-    branches:
-      - main
+    branches: -main
   pull_request:
-    branches:
-      - main
+    types: [opened, synchronize]
+    branches: -main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: "Set up Node.js"
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
+      - name: "Install Dependencies"
+        run: npm ci
 
-      - name: Run Lint
+      - name: "Run Linter"
         run: npm run lint
 
-      - name: Build project
+      - name: " Build Project"
         run: npm run build
