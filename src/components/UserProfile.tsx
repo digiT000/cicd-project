@@ -2,7 +2,7 @@ import type { User } from '../App';
 
 export default function UserProfile(user: User) {
   return (
-    <section className="user-profile">
+    <section className="user-profiles">
       <img
         src={user.imageUrl ?? 'https://via.placeholder.com/150'}
         alt={user.name}
