@@ -1,75 +1,45 @@
-# React + TypeScript + Vite
+# Frontend CI Pipeline Practice (GitHub Actions + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository is a **practice project** to learn and understand how to implement a **Continuous Integration (CI) pipeline** for a frontend application using **GitHub Actions**.
 
-Currently, two official plugins are available:
+The focus of this project is not UI complexity, but **how CI works in real-world frontend development**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tech Stack
 
-## React Compiler
+- **Vite** – Frontend build tool
+- **React** – UI library
+- **TypeScript** – Type safety
+- **ESLint** – Code linting
+- **Husky** – Pre commit & Pre Push check
+- **GitHub Actions** – Continuous Integration (CI)
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🎯 Project Purpose
 
-## Expanding the ESLint configuration
+This project is created to practice:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Setting up a CI pipeline using GitHub Actions
+- Running frontend build pipelines automatically
+- Catching lint and build errors early
+- Understanding how CI behaves on push and pull requests
+- Learning how CI failures block pull request merges
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🔁 CI Workflow Overview
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+The CI pipeline runs automatically when:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Code is pushed to the `main` branch
+- A pull request is opened or updated
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### CI Steps
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1. Checkout repository code
+2. Setup Node.js environment
+3. Install dependencies
+4. Run ESLint
+5. Build the project
+
+If any step fails, the CI pipeline fails.
