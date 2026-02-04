@@ -1,13 +1,15 @@
 import { test } from 'vitest';
 import UserProfile from '../../components/UserProfile';
 import { render } from 'vitest-browser-react';
+import '../../App.css';
+import '../../index.css';
 
 test('User Profile Component', async () => {
   const screen = await render(
     <UserProfile
       email="fareldeksano000@gmail.com"
       id={1}
-      imageUrl={null}
+      imageUrl={'https://placehold.co/100x100'}
       name="Farel"
     />
   );

@@ -30,6 +30,12 @@ export default defineConfig({
             provider: playwright(),
             instances: [{ browser: 'chromium' }],
           },
+          css: true,
+        },
+        css: {
+          modules: {
+            scopeBehaviour: 'local',
+          },
         },
       },
     ],

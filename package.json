@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "unit-test": "vitest --project=unit"
+    "unit-test": "vitest --project=unit",
+    "browser-test": "vitest --project=browser"
   },
   "dependencies": {
     "dayjs": "^1.11.19",
