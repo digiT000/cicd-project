@@ -1,5 +1,5 @@
 import { test } from 'vitest';
-import UserProfile from '../../components/UserProfile';
+import UserProfile from '../../components/user-profile/UserProfile';
 import { render } from 'vitest-browser-react';
 import '../../App.css';
 import '../../index.css';

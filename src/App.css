@@ -54,17 +54,8 @@ p {
   color: #888;
 }
 
-.user-profiles {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.user-image {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
+.app-container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
 }
