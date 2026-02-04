@@ -1,0 +1,27 @@
+.userProfiles {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 4px;
+}
+
+.text {
+  font-size: 14px;
+}
+
+.bold {
+  font-weight: 600;
+}

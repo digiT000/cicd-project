@@ -1,5 +1,8 @@
 import './App.css';
-import UserProfile from './components/UserProfile';
+import Cart from './components/cart/Cart';
+import ProductList from './components/product-list/ProductList';
+import UserProfile from './components/user-profile/UserProfile';
+import styles from './css/Global.module.css';
 
 export interface User {
   id: number;
@@ -17,9 +20,13 @@ const MOCK_DATA_USER: User = {
 
 function App() {
   return (
-    <>
+    <section className="app-container">
       <UserProfile {...MOCK_DATA_USER} />
-    </>
+      <section className={styles.container}>
+        <ProductList />
+        <Cart />
+      </section>
+    </section>
   );
 }
 
