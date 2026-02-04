@@ -29,7 +29,7 @@ jobs:
         run: npm run lint
       
       - name: "Run Tests"
-        run: npm run test
+        run: npm run unit-test
 
       - name: " Build Project"
         run: npm run build
