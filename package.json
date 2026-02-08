@@ -16,6 +16,7 @@
     "dayjs": "^1.11.19",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "swr": "^2.4.0",
     "vitest-browser-react": "^2.0.5"
   },
   "devDependencies": {
