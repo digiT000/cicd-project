@@ -1,8 +1,6 @@
 import './App.css';
-import Cart from './components/cart/Cart';
-import ProductList from './components/product-list/ProductList';
+import ProductCartWrapper from './components/shared/ProductCartWrapper';
 import UserProfile from './components/user-profile/UserProfile';
-import styles from './css/Global.module.css';
 
 export interface User {
   id: number;
@@ -22,10 +20,7 @@ function App() {
   return (
     <section className="app-container">
       <UserProfile {...MOCK_DATA_USER} />
-      <section className={styles.container}>
-        <ProductList />
-        <Cart />
-      </section>
+      <ProductCartWrapper />
     </section>
   );
 }
