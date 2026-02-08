@@ -1,28 +1,32 @@
 import styles from '../../css/Global.module.css';
+import type { ProductInterface } from '../product-wrapper/ProductWrapper';
 import Product from '../product/Product';
 
-export interface Product {
-  id: number;
-  name: string;
-  price: number;
+interface ProductListProps {
+  products: ProductInterface[];
+  handleAddToCart: (product: ProductInterface) => void;
 }
 
-const products: Product[] = [
-  { id: 1, name: 'Wireless Headphones', price: 59.99 },
-  { id: 2, name: 'Mechanical Keyboard', price: 120.5 },
-  { id: 3, name: 'Gaming Mouse', price: 45.0 },
-  { id: 4, name: 'USB-C Hub', price: 25.99 },
-];
+export default function ProductList({
+  products,
+  handleAddToCart,
+}: ProductListProps) {
+  if (products.length === 0) {
+    return <p className={styles.emptyMsg}>No products available</p>;
+  }
 
-export default function ProductList() {
   return (
-    <div className={styles.column}>
-      <h2 className={styles.heading}>Products</h2>
-      <div className={styles.list}>
-        {products.map((product: Product) => (
-          <Product key={product.id} {...product} />
-        ))}
-      </div>
+    <div className={styles.list}>
+      {products.map((product: ProductInterface) => {
+        return (
+          <Product
+            key={product.id}
+            inCart={false}
+            product={product}
+            handleAddToCart={handleAddToCart}
+          />
+        );
+      })}
     </div>
   );
 }

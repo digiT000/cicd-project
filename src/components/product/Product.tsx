@@ -1,10 +1,25 @@
-import type { Product } from '../product-list/ProductList';
+import type { ProductInterface } from '../product-wrapper/ProductWrapper';
 import styles from './Product.module.css';
 import buttonStyles from '../../css/Button.module.css';
 
-export default function Product(product: Product) {
+interface ProductProps {
+  product: ProductInterface;
+  inCart: boolean;
+  handleAddToCart: (product: ProductInterface) => void;
+}
+
+export default function Product({
+  inCart,
+  product,
+  handleAddToCart,
+}: ProductProps) {
+  function addToCart(e: React.MouseEvent<HTMLButtonElement>) {
+    e.preventDefault();
+    handleAddToCart(product);
+  }
+
   return (
-    <article key={product.id} className={styles.item}>
+    <article className={styles.item}>
       <div className={styles.itemDetails}>
         <strong className={styles.itemName}>{product.name}</strong>
 
@@ -12,10 +27,11 @@ export default function Product(product: Product) {
       </div>
       {/* CSS Modules supports multiple classes via template literals */}
       <button
+        data-testid={`add-to-cart-button-${product.id}`}
         className={`${buttonStyles.btn} ${buttonStyles.btnAdd}`}
-        // onClick={() => addToCart(product)}
+        onClick={addToCart}
       >
-        Add to Cart
+        {inCart ? 'In Cart' : 'Add to Cart'}
       </button>
     </article>
   );

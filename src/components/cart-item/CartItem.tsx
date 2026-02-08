@@ -1,16 +1,25 @@
 import styles from './CartItem.module.css';
 import buttonStyles from '../../css/Button.module.css';
-import type { Product } from '../product-list/ProductList';
+import type { ProductInterface } from '../product-wrapper/ProductWrapper';
 
-export default function CartItem(item: Product) {
+interface CartItemProps {
+  item: ProductInterface;
+  handlerRemoveFromCart: (id: number) => void;
+}
+
+export default function CartItem({
+  item,
+  handlerRemoveFromCart,
+}: CartItemProps) {
   return (
     <div className={styles.item}>
       <span>{item.name}</span>
       <div className={styles.actions}>
         <strong>${item.price.toFixed(2)}</strong>
         <button
+          data-testid={`remove-from-cart-button-${item.id}`}
           className={`${buttonStyles.btn} ${buttonStyles.btnRemove}`}
-          //   onClick={() => removeFromCart(index)}
+          onClick={() => handlerRemoveFromCart(item.id)}
         >
           ✕
         </button>

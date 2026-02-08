@@ -30,3 +30,8 @@
   margin-bottom: 20px;
   text-align: left;
 }
+.emptyMsg {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+}
