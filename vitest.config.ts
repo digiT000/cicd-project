@@ -10,7 +10,6 @@ const browserTestConfig: ProjectConfig = {
   browser: {
     enabled: true,
     provider: playwright(),
-    instances: [{ browser: 'chromium' }],
   },
   css: true,
 };
@@ -34,6 +33,10 @@ export default defineConfig({
         test: {
           ...browserTestConfig,
           name: 'browser',
+          browser: {
+            ...browserTestConfig.browser,
+            instances: [{ browser: 'chromium' }],
+          },
         },
         css: {
           modules: {
