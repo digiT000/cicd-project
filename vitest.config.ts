@@ -10,6 +10,7 @@ const browserTestConfig: ProjectConfig = {
   browser: {
     enabled: true,
     provider: playwright(),
+    instances: [{ browser: 'chromium' }],
   },
   css: true,
 };
@@ -35,7 +36,6 @@ export default defineConfig({
           name: 'browser',
           browser: {
             ...browserTestConfig.browser,
-            instances: [{ browser: 'chromium' }],
           },
         },
         css: {
@@ -47,7 +47,7 @@ export default defineConfig({
       {
         test: {
           ...browserTestConfig,
-          name: 'headless-browser',
+          name: 'headless',
           browser: {
             ...browserTestConfig.browser,
             headless: true,
