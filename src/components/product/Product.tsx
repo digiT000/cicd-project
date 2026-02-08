@@ -19,7 +19,7 @@ export default function Product({
   }
 
   return (
-    <article className={styles.item}>
+    <article data-testid="product-item" className={styles.item}>
       <div className={styles.itemDetails}>
         <strong className={styles.itemName}>{product.name}</strong>
 

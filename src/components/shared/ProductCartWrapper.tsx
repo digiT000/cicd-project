@@ -19,6 +19,7 @@ export default function ProductCartWrapper() {
   return (
     <section className={styles.container}>
       <ProductWrapper setCart={setCartItems} />
+
       <Cart carts={cart} removeItemFromCart={removeItemFromCart} />
     </section>
   );

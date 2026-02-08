@@ -1,5 +1,5 @@
 import styles from '../../css/Global.module.css';
-import type { ProductInterface } from '../product-wrapper/ProductWrapper';
+import { type ProductInterface } from '../product-wrapper/ProductWrapper';
 import Product from '../product/Product';
 
 interface ProductListProps {
@@ -8,8 +8,8 @@ interface ProductListProps {
 }
 
 export default function ProductList({
-  products,
   handleAddToCart,
+  products,
 }: ProductListProps) {
   if (products.length === 0) {
     return <p className={styles.emptyMsg}>No products available</p>;
