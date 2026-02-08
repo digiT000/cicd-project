@@ -1,5 +1,19 @@
 import { defineConfig } from 'vitest/config';
 import { playwright } from '@vitest/browser-playwright';
+import { ProjectConfig } from 'vitest/node';
+
+const browserTestConfig: ProjectConfig = {
+  include: [
+    'src/tests/browser/**/*.{test,spec}.tsx',
+    'src/tests/**/*.browser.{test,spec}.tsx',
+  ],
+  browser: {
+    enabled: true,
+    provider: playwright(),
+    instances: [{ browser: 'chromium' }],
+  },
+  css: true,
+};
 
 export default defineConfig({
   test: {
@@ -18,23 +32,22 @@ export default defineConfig({
       },
       {
         test: {
-          // an example of file based convention,
-          // you don't have to follow it
-          include: [
-            'src/tests/browser/**/*.{test,spec}.tsx',
-            'src/tests/**/*.browser.{test,spec}.tsx',
-          ],
+          ...browserTestConfig,
           name: 'browser',
-          browser: {
-            enabled: true,
-            provider: playwright(),
-            instances: [{ browser: 'chromium' }],
-          },
-          css: true,
         },
         css: {
           modules: {
             scopeBehaviour: 'local',
+          },
+        },
+      },
+      {
+        test: {
+          ...browserTestConfig,
+          name: 'headless-browser',
+          browser: {
+            ...browserTestConfig.browser,
+            headless: true,
           },
         },
       },
